@@ -1,0 +1,23 @@
+<div id="DescriptionDiv" class="banner" style="text-align: left; margin: 5px; padding:8px;"
+     ng-bind-html="description | unsafe">
+</div>
+<div style="text-align: center; background-image: url('/images/art/burningman.png'); background-repeat: no-repeat">
+     <br />
+     <!--<img id="Logo" style="margin-bottom: 10px; border: outset 1px lightgrey; width: 100%; max-width: 550px;" alt="The photography of Michael Magoski." src="/images/art/burningman.png" />-->
+     <div style="display:inline-block; width: 25px;">
+          &nbsp;
+     </div>
+     <span>
+          <div style="background-color: rgba(255, 255, 255, .9); width: 100%; max-width: 350px;
+          display:inline-block; vertical-align: top;margin-bottom: 10px; padding: 15px;">
+               <a ui-sref="register" ui-sref-active="active" ng-class="{active: $state.includes('register')}">Register
+               </a>
+               <a ui-sref="login" ui-sref-active="active">Log In</a><br />
+               <br />
+               <span ui-view="home_account"></span>
+          </div>
+     </span>
+     <div style="margin-bottom: 10px; display: inline-block; max-width: 350px; text-align:left;padding: 0px; vertical-align: top; min-width: 30px;">
+          &nbsp;
+     </div>
+</div>

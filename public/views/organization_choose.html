@@ -1,0 +1,11 @@
+<h2>Choose the organization you want to work with:</h2><br />
+<br />{{ $state.current.name }}
+<div style="float:right;">
+     <a ui-sref="node({ id: new })">[add org]</a>
+</div><br />
+<div ng-repeat='org in orgs'>
+     <div style="border: solid 1px #CCCCCC; max-width: 350px; padding: 5px; cursor: hand;">
+          <a ui-sref="node({ id: 'weavver' })">{{org.name}}</a>
+     </div>
+</div>
+<br />

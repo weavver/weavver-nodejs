@@ -1,0 +1,13 @@
+
+<select ng-model="global.orgs" ng-options="org.name as org.name for org in orgs" style="width: 150px;
+                    margin: 5px;">
+
+</select>
+
+<div id="SignInArea" class="sign-in" style="color: #000000;display:inline-block;">
+<span>
+      <a class="account-link" style="color: #000000;" ui-sref="account">
+           {{username}}
+      </a> |
+     <a class="sign-out-link" style="color: #000000;" ui-sref="home">Sign Out</a>
+</span>

@@ -1,0 +1,136 @@
+<div class="row">
+     <div class="col-lg-12">
+          <h2>Schema Designer</h2>
+          <br />
+     </div>
+</div>
+<uib-tabset active="active">
+     <uib-tab index="0" heading="Design"  style="background-color: white;">
+
+          <div class="container" style="border: solid 1px #CCCCCC; background-color: #F5F5F5">
+
+               <div style="text-align:right;">
+                    <a href="#/{{schema.type}}/list">[back to list]</a>
+               </div>
+               <div class="row">
+                    <div class="col-xs-6">Type:</div>
+                    <div class="col-xs-6"><input type="text" value="" ng-model="data.type" /></div>
+               </div>
+               <div class="row">
+                    <div class="col-xs-6">Display Name:</div>
+                    <div class="col-xs-6"><input type="text" value="" ng-model="data.name" /></div>
+               </div>
+               <div class="row">
+                    <div class="col-xs-6">Description:</div>
+                    <div class="col-xs-6"><input type="text" value="description" ng-model="data.description" /></div>
+               </div>
+               <div class="row">
+                    <div class="col-md-12 col-lg-2">
+                    <hr />
+                    <div class="container">
+                         <div class="row" ng-repeat='field in schema.fields track by field.key'>
+                              <div class="col-xs-3">{{field.name}}:</div>
+                              <div class="col-xs-3" ng-if='field.schema="string"'>
+                                   <input type="text" value="" ng-model="" />
+                              </div>
+                              {{field | json}}
+                              <div class="col-xs-3" ng-if='field.schema == "schema_field"'>
+                                   some other type
+                              </div>
+                         </div>
+                         <hr>
+                         <div class="row" style="margin-bottom: 20px;">
+                              <div class="col-md-8"><h3>Fields:</h3></div>
+                              <div class="col-md-4"
+                                   style="text-align:right;"><a ng-click="field_add()" href="">[add field]</a></div>
+                         </div>
+                         <div class="row" ng-repeat='field in data.fields track by field.key'>
+                              <a ng-if="$index != 0" ng-click="up($index)" href="">[up]</a>
+                              <a ng-click="down($index)" href="">[down]</a>
+                              <div class="col-md-12 col-lg-12">
+                                   <div class="container" style="border: solid 1px #CCCCCC; padding: 5px; cursor: hand; margin-bottom:
+                                   15px;">
+                                        <div class="row">
+                                             <div class="col-xs-12">
+                                                  <a ng-click="field_remove(field)" href="">[remove]</a>
+                                             </div>
+                                        </div>
+                                        <div class="row">
+                                             <div class="col-xs-3">Key:</div>
+                                             <div class="col-xs-3"><input type="text" value="" ng-model="field.key" /></div>
+                                        </div>
+                                        <div class="row">
+                                             <div class="col-xs-3">Name:</div>
+                                             <div class="col-xs-9"><input type="text" value="" ng-model="field.name" /></div>
+                                        </div>
+                                        <div class="row">
+                                             <div class="col-xs-3">Data Type:</div>
+                                             <div class="col-xs-9">
+                                                  <select ng-model="field.schema">
+                                                       <option value="">string</option>
+                                                       <option>number</option>
+                                                       <option>money</option>
+                                                       <option>-----</option>
+                                                       <option ng-repeat="type in typelist"
+                                                               value="{{type.type}}">{{type.name}}</option>
+                                                  </select>
+                                             </div>
+                                        </div>
+                                        <div class="row">
+                                             <div class="col-xs-3">Data Type Style:</div>
+                                             <div class="col-xs-6">
+                                                  <input type="radio" ng-model="field.datatypecount" value="single" />Single
+                                                  <input type="radio" ng-model="field.datatypecount" value="multiple" />Multiple
+                                             </div>
+                                        </div>
+                                        <div class="row">
+                                             <div class="col-xs-3">Show on List</div>
+                                             <div class="col-xs-9"><input type="checkbox" ng-model="field.showonlist" /></div>
+                                        </div>
+                                        <div class="row">
+                                             <div class="col-xs-3">Description:</div>
+                                             <div class="col-xs-9"><input type="text" value="description" ng-model="field.description" /></div>
+                                        </div>
+                                        <div class="row">
+                                             <div class="col-xs-3">Validation RegEx:</div>
+                                             <div class="col-xs-9"><input type="text" value="" ng-model="field.validation_regex" /></div>
+                                        </div>
+                                        <div class="row">
+                                             <div class="col-xs-3">Text Align:</div>
+                                             <div class="col-xs-9">
+                                                  <select ng-model="field.text_align">
+                                                       <option value="left">Left</option>
+                                                       <option value="middle">Middle</option>
+                                                       <option value="right">Right</option>
+                                                  </select>
+                                             </div>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+                    <div class="container">
+                         <div class="row">
+                              <div class="col-md-3"></div>
+                              <div class="col-md-9">
+                                   <input type="button" ng-click="saveModel()" value="Save Model">
+                              </div>
+                         </div>
+                    </div>
+                    <br />
+                    <br />
+                    <input type="button" ng-click="deleteItem()" value="Delete">
+               </div>
+          </div>
+          <br />
+          <br />
+     </div>
+</uib-tab>
+<uib-tab index="1" heading="Schema">
+     <pre style="wrap-option: none">{{ schema | json }}</pre>
+     <hr />
+     <pre style="wrap-option: none">{{ data | json }}</pre>
+     <hr />
+     <pre style="wrap-option: none">{{ type_list | json }}</pre>
+</uib-tab>
+</uib-tabset>

@@ -1,0 +1,59 @@
+[
+  {
+    "namespace": "Accounting",
+    "primitives": [
+      {
+        "name": "LedgerItem",
+        "fields": [
+          {
+            "id": "guid",
+            "type": "guid",
+            "value": "none",
+            "order": 1,
+            "template": "default",
+            "isReadOnly": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "namespace": "CMS"
+  },
+  {
+    "namespace": "Communication"
+  },
+  {
+    "namespace": "Customer Service"
+  },
+  {
+    "namespace": "Data"
+  },
+  {
+    "namespace": "HR"
+  },
+  {
+    "namespace": "IT"
+  },
+  {
+    "namespace": "Knowledge Base"
+  },
+  {
+    "namespace": "Legal"
+  },
+  {
+    "namespace": "Logistics"
+  },
+  {
+    "namespace": "Marketing"
+  },
+  {
+    "namespace": "Sales"
+  },
+  {
+    "namespace": "Source"
+  },
+  {
+    "namespace": "System"
+  }
+]

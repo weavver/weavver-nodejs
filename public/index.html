@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="WeavverApp">
+<head>
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+     <title>My Dashboard</title>
+     <base href="/" />
+     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+     <title>Weavver&reg; :: Abre Los Ojos.&#0153;</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+     <link rel="icon" href="/images/favicon64x64.png" sizes="64x64" type="image/png" />
+     <link rel="apple-touch-icon-precomposed" href="/images/favicon64x64.png" />
+     <link rel="stylesheet" type="text/css" href="Styles/Master.css" />
+     <link media="only screen and (max-device-width: 480px) and (min-device-width: 320px)" href="Styles/Mobile.css" type="text/css" rel="stylesheet" />
+     <link rel="stylesheet" type="text/css" href="/Vendors/jQuery/jquery-ui-1.9.2.custom.min.css" />
+     <!--<%&#45;&#45;<link rel="stylesheet" type="text/css" href="/Vendors/jQuery/jquery-ui-1.9.1.flick.css" />-->
+     <link rel="stylesheet" type="text/css" href="/Vendors/jQuery/jquery.lightbox-0.5.css" media="screen" />
+     <!--<link rel='stylesheet' type='text/css' href='/Vendors/Adam Shaw/fullcalendar/fullcalendar.css' />-->
+
+     <script src="bower_components/angular/angular.js"></script>
+     <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+     <!--<script src="bower_components/angular-route/angular-route.js"></script>-->
+
+     <script type="text/javascript" src="/scripts/jstz.min.js"></script>
+     <!--<script type="text/javascript" src="/vendors/ajaxorg-ace/ace.js" charset="utf-8"></script>-->
+     <!--<script type="text/javascript" src="/vendors/ajaxorg-ace/mode-csharp.js" charset="utf-8"></script>-->
+
+     <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+     <script type="text/javascript" src="/vendors/jquery/jquery-ui-1.9.2.custom.min.js"></script>
+     <script type="text/javascript" src="/vendors/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+     <script type="text/javascript" src="/vendors/jquery-dialogextend/jquery-dialogextend.js"></script>
+     <script src="scripts/controllers/menu.js"></script>
+     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+     <script src="/socket.io/socket.io.js"></script>
+
+     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
+
+     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
+
+
+</head>
+<body ui-view="body" onload="">
+     <div class="header">
+          <div id="topbar" style='background-color: #59b8ee; border-bottom: 0px solid black; z-index: 100000; clear: both;'>
+               <!--<wvvr:WebMenu ID="Toolbar" runat="server" />-->
+
+               <div style='clear: both;'></div>
+               </div>
+               <div style="padding: 10px;, margin: auto; text-align: right;" ui-view="accountmenu">
+
+                    <div style="float:left; max-width: 300px; vertical-align: middle; height: 63px; margin-top: 5px; margin-bottom: 5px;">
+                         <a id="HeaderLogoLink" style="vertical-align: middle;" ui-sref="home">
+                              <img alt="" id="HeaderLogo" src="/images/logo.png" style="border: none; display:block; float:left; max-width: 100%;" />
+                         </a>
+                    </div>
+                    MENU444
+               </div>
+          </div>
+          <div style="float:right; height:10px;width: auto; color: Black; padding-bottom: 5px;">
+               <div style='clear: both;'></div>
+          </div>
+          <div id="NavigationBox" style="float:right; padding-bottom: 0px; padding-right: 15px; text-align: center; clear: right;">
+                    asdf
+          </div>
+          <div style="clear: both;"></div>
+          <div style="float:left; max-width: 300px; vertical-align: middle; height: 63px; margin-top: 5px; margin-bottom: 5px;">
+     </div>
+     <div style="clear:both; height: 3px;">&nbsp;</div>
+     <div id="ErrorLayer" ng-if="error" style="background-color: #f3eaea; margin: auto; border: solid 1px lightgrey; padding: 5px; width: 900px; margin: auto; margin-bottom: 10px;">
+          {{errorMessage}}
+     </div>
+          <div id="ContentTable" class="container-fluid">
+               <div id="modalBox" style="">
+               </div>
+                     <div style="width:100%">
+                         <div ng-if='"account" | isState'>it's this state!'</div>
+                         <a ui-sref="account" ui-sref-active-eq="account" ui-sref-active="active">login</a>
+                         <div style="display:inline-block; vertical-align:middle; font-size: 15pt; font-weight: bold; padding-top: 3px; padding-left: 5px; width:100%; padding: 10px;"
+                              ui-view="content">
+
+                         </div>
+                    </div>
+                    <div style="clear: both;"></div>
+               </div>
+               <div style="clear: both;"></div>
+          </div>
+
+          <!--<div id='TheIFrame'>-->
+               <!--<a ui-sref="list">load list</a> place-->
+               <!--holder-->
+               <!--<div style='height: 95%; width: 100%;' ui-view="popupcontent"></div>-->
+          <!--</div>-->
+
+     <div class="omnibox" ng-controller="omnibox">
+          <input type="textbox" class="omnibox_textbox" placeholder="enter command" ng-model="command_text"
+                 my-enter="submit()" />
+     </div>
+     <div id="footer" class="footer" style="position:fixed;bottom:0px;width:100%;">
+          <div style="padding-left: 25px; padding-right: 15px; text-decoration: none; float:left;">
+               &copy;Weavver&reg;, Inc. 2009-2016 |
+               <a ui-sref="node({id: 'privacy'})">Privacy</a> |
+               <a ui-sref="node({id: 'legal_termsofservice'})">Terms of Service</a> |
+               <a ui-sref="node({id: 'trademarks'})">Trademarks</a> |
+               <!--&nbsp;<asp:Literal ID="Source" runat="server">Source</asp:Literal>-->
+          </div>
+          <div style="float:right; padding-right: 25px; text-decoration: none;">
+               <!--<wvvr:QRCode ID="QRGenerator" /> |-->
+               <a class="footer-links" href="customerservice/feedback?Source=Website%20Inquiry">Send Feedback</a>&nbsp;|
+                 &nbsp;<a href="https://bitbucket.org/weavver/weavver/commits/all">Alpha</a>
+          </div>
+          <div style="clear: both;" />
+     </div>
+     <script src="/scripts/ui-states.js"></script>
+     <script src="/scripts/controllers/index.js"></script>
+     <script src="/scripts/plumbing/sessionrecoverer.js"></script>
+     <script src="/scripts/services/global.js"></script>
+     <script src="/scripts/controllers/auth.js"></script>
+     <script src="/scripts/controllers/cmspage.js"></script>
+     <script src="/scripts/controllers/node.js"></script>
+     <script src="/scripts/controllers/home.js"></script>
+     <script src="/scripts/controllers/list.js"></script>
+     <script src="/scripts/controllers/menu.js"></script>
+     <script src="/scripts/controllers/schema.js"></script>
+     <script src="/scripts/controllers/omnibox.js"></script>
+     <script src="/scripts/weavver.js"></script>
+</body>
+</html>

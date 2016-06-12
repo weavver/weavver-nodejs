@@ -1,0 +1,57 @@
+﻿body {
+}
+
+
+.sign-in
+{
+     /*display: none;*/
+     color: Black;
+}
+
+#ContentTable
+{
+     width: auto;
+}
+
+#DefaultHeader
+{
+     width: auto;
+     color: Black;
+}
+
+.sign-in
+{
+     color: Black;
+     width: inherit;
+     margin-right: 0px;
+}
+
+.header
+{
+     background-image: none;
+}
+
+.header-logo
+{
+    /* background-repeat: no-repeat;
+     height: 10px !important;
+     margin-left: 0px;
+     background-image: url('/images/logo.png');*/
+}
+
+
+
+.account-link, .sign-out-link
+{
+     color: #000000 !important;
+}
+
+
+#ContentTable
+{
+      padding: 5px;
+}
+
+#SignInArea
+{
+}

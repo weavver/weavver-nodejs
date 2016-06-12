@@ -1,0 +1,40 @@
+
+<div style="float:right;">
+     <a ui-sref="list">[back]</a><br>
+</div>
+--------{{ $state.current.name }}-------- <br />
+<br />
+details view: {{ id }} <br />
+type: {{ type }}
+<br />
+<div ng-if="$state.is('details')">it's details!</div>
+<br>
+<div style="float:right;">
+     <a ui-sref="node({ id: $scope.type, action: 'new' })">[add]</a>
+</div><br />
+<br>
+{{ item || JSON }}
+<h3>menu:</h3>
+<div ng-repeat='item in menu'>
+     <div style="border: solid 1px #CCCCCC; max-width: 350px; padding: 5px; cursor: hand;">
+          <a ui-sref="details({ 'menu': item.name })">{{item.name}}</a>
+     </div>
+</div>
+<br />
+<br />
+<h3>fields:</h3>
+<div ng-repeat='field in schema'>
+     <div style="border: solid 1px #CCCCCC; max-width: 350px; padding: 5px; cursor: hand;">
+          <a ui-sref="details({ 'id': field.name })">{{field.name}}</a>
+     </div>
+</div>
+<br />
+
+<br />
+<div ng-repeat='item in data'>
+     <div style="border: solid 1px #CCCCCC; max-width: 350px; padding: 5px; cursor: hand;">
+          <a ui-sref="details({ 'id': item.id })">{{item.Memo}}</a>
+     </div>
+</div>
+<br />
+<br />

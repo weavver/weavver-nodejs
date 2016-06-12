@@ -1,0 +1,39 @@
+{{ schema.name }} List<br>
+<br>
+
+<uib-tabset active="active">
+     <uib-tab index="0" heading="List"  style="background-color: white;">
+          <table style="width: 100%" cellpadding="5px" cellspacing="5px">
+          <tbody>
+          <tr class="RowStyle">
+               <td ng-repeat='field in schema.fields | filter: { showonlist: true }' style="text-align: &nbsp;{{field.header.text_align}}">{{field.name}}</td>
+               <td colspan="2" style="text-align:center;">
+                    <a href="#/{{schema.type}}/new">[add new]</a>
+               </td>
+          </tr>
+          <tr ng-repeat='row in results | orderBy: "type"' class="RowStyle" ng-class="{HoverRowStyle: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
+
+               <!--<td style="padding: 10px;">{{item.Id}}</td>-->
+               <!--<td style="padding: 10px;">{{item.Memo}}</td>-->
+               <!--<td style="padding: 10px;">{{item.Amount}}</td>-->
+               <!--<td style="padding: 10px;"><a ng-click="edit({id: item.Id})">[edit]</a></td>-->
+               <!--<td style="padding: 10px;"><a ui-sref="details({ 'id': item.Id })">[view]</a></td>-->
+
+               <td ng-repeat='field in schema.fields | filter: { showonlist: true }' style="text-align: {{field.header.text_align}}">
+                    &nbsp;{{getField(row, field.key)}}
+               </td>
+               <td>
+                    <a href="#/schema/edit/{{ row._id }}">[edit]</a>
+               </td>
+               <td>
+                    <a href="#/{{row.type}}/list">[list]</a>
+               </td>
+          </tr>
+          </tbody>
+          </table>
+     </uib-tab>
+     <uib-tab index="1" heading="Schema">
+          <div style="text-align:right;"><a href="#/schema/edit/{{schema._id}}">[edit model]</a></div><br />
+          <pre>{{ schema | json }}</pre>
+     </uib-tab>
+</uib-tabset>
