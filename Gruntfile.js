@@ -12,7 +12,7 @@ module.exports = function (grunt) {
           },
           nodemon: {
                dev: {
-                    script: 'weavver.js',
+                    script: 'app.js',
                     ignore: ['units/**', '']
                }
           },
@@ -22,7 +22,7 @@ module.exports = function (grunt) {
                          expand: true,
                          cwd: 'public/scripts',
                          src: '**/*.js',
-                         dest: 'dest/js/weavver.js'
+                         dest: 'public/scripts/weavver.js'
                     }]
                }
           },
@@ -31,15 +31,30 @@ module.exports = function (grunt) {
                     separator: ';',
                },
                dist: {
-                    src: ['public/scripts/**/*.js'],
-                    dest: 'dist/weavver.js',
+                    src: [
+                         'js/ui-states.js',
+                         'js/weavver.js',
+                         'js/controllers/*.js',
+                         'js/plumbing/*.js',
+                         'js/services/*.js'
+                    ],
+                    dest: 'public/scripts/weavver.js'
                }
           },
           watch: {
+               css: {
+                    files: ['src/css'],
+                    tasks: ['uglify']
+               },
                js: {
-                files: ["app.js"],
-                //tasks: ['nodemon'],
-                options: { nospawn: true, livereload: true }
+                    files: ["js/**/*.js"],
+                    tasks: [
+                         'concat'
+                    ],
+                    options: {
+                         nospawn: true,
+                         livereload: true
+                    }
                }
           }
      });
@@ -48,4 +63,5 @@ module.exports = function (grunt) {
      grunt.loadNpmTasks('grunt-nodemon');
      grunt.loadNpmTasks('grunt-contrib-uglify');
      grunt.loadNpmTasks('grunt-contrib-concat');
+     grunt.loadNpmTasks('grunt-contrib-watch');
 };

@@ -1,6 +1,7 @@
 
-exports.init = function (global) {
-     global.messages.consume('account_login', 'account_login-checkcredentials', {autoDelete: true, noAck: false}, function (message) {
+exports.init = function (weavver) {
+     var options_login = {autoDelete: true, noAck: false};
+     weavver.messages.consume('account_login', 'account_login-checkcredentials', options_login, function (message) {
           console.log('account_login: ' + JSON.stringify(message));
           //global.messages.queue_publish(global.nodeQueueId, 'testing');
 
@@ -21,7 +22,8 @@ exports.init = function (global) {
      });
 
 
-     global.messages.consume('account_register', 'account_register-sqlserver', {autoDelete: true, noAck: false}, function (message) {
+     var options_register = {autoDelete: true, noAck: false};
+     weavver.messages.consume('account_register', 'account_register-sqlserver', options_register, function (message) {
           console.log('account_login: ' + JSON.stringify(message));
           //global.messages.queue_publish(global.nodeQueueId, 'testing');
 

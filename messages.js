@@ -6,8 +6,9 @@ exports.init = function (global, callback) {
           process.exit(1);
      }
 
+     global.log('// connecting to amqp service: %s', global.amqp_url)
      require('amqplib/callback_api')
-          .connect('amqp://localhost', function(err, conn) {
+          .connect(global.amqp_url, function(err, conn) {
                if (err != null) bail(err);
 
                conn.createChannel(function (err, ch) {
@@ -40,8 +41,10 @@ exports.init = function (global, callback) {
                     };
 
                     exports.exchange_publish = function (exchange, message) {
-                         console.log('publishing to exchange ' + exchange + ': ' + message);
-                         ch.publish(exchange, '', new Buffer(JSON.stringify(message)));
+                         console.log('publishing to exchange \'' + exchange + '\': ' + JSON.stringify(message));
+                         ch.publish(exchange, '', new Buffer(JSON.stringify(message)), function () {
+                              console.log('called back');
+                         });
                     };
 
                     var reply_events = {};
@@ -57,8 +60,10 @@ exports.init = function (global, callback) {
                          });
                     };
 
-                    console.log('amqp connection ready');
+                    console.log('// connected to rabbitmq'.green);
                     callback();
                });
+
+               exports.conn = conn;
           });
 }

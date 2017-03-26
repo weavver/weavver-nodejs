@@ -23,7 +23,7 @@
      <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
      <!--<script src="bower_components/angular-route/angular-route.js"></script>-->
 
-     <script type="text/javascript" src="/scripts/jstz.min.js"></script>
+     <!--<script type="text/javascript" src="/scripts/jstz.min.js"></script>-->
      <!--<script type="text/javascript" src="/vendors/ajaxorg-ace/ace.js" charset="utf-8"></script>-->
      <!--<script type="text/javascript" src="/vendors/ajaxorg-ace/mode-csharp.js" charset="utf-8"></script>-->
 
@@ -31,7 +31,7 @@
      <script type="text/javascript" src="/vendors/jquery/jquery-ui-1.9.2.custom.min.js"></script>
      <script type="text/javascript" src="/vendors/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
      <script type="text/javascript" src="/vendors/jquery-dialogextend/jquery-dialogextend.js"></script>
-     <script src="scripts/controllers/menu.js"></script>
+     <!--<script src="scripts/controllers/menu.js"></script>-->
      <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
      <script src="/socket.io/socket.io.js"></script>
 
@@ -39,8 +39,6 @@
      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
 
      <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.3.js"></script>
-
-
 </head>
 <body ui-view="body" onload="">
      <div class="header">
@@ -56,14 +54,14 @@
                               <img alt="" id="HeaderLogo" src="/images/logo.png" style="border: none; display:block; float:left; max-width: 100%;" />
                          </a>
                     </div>
-                    MENU444
+                    <div class="omnibox" ng-controller="omnibox">
+                         <input type="textbox" class="omnibox_textbox" placeholder="enter command" ng-model="command_text"
+                                my-enter="submit()" />
+                    </div>
                </div>
           </div>
           <div style="float:right; height:10px;width: auto; color: Black; padding-bottom: 5px;">
                <div style='clear: both;'></div>
-          </div>
-          <div id="NavigationBox" style="float:right; padding-bottom: 0px; padding-right: 15px; text-align: center; clear: right;">
-                    asdf
           </div>
           <div style="clear: both;"></div>
           <div style="float:left; max-width: 300px; vertical-align: middle; height: 63px; margin-top: 5px; margin-bottom: 5px;">
@@ -93,11 +91,6 @@
                <!--holder-->
                <!--<div style='height: 95%; width: 100%;' ui-view="popupcontent"></div>-->
           <!--</div>-->
-
-     <div class="omnibox" ng-controller="omnibox">
-          <input type="textbox" class="omnibox_textbox" placeholder="enter command" ng-model="command_text"
-                 my-enter="submit()" />
-     </div>
      <div id="footer" class="footer" style="position:fixed;bottom:0px;width:100%;">
           <div style="padding-left: 25px; padding-right: 15px; text-decoration: none; float:left;">
                &copy;Weavver&reg;, Inc. 2009-2016 |
@@ -113,18 +106,6 @@
           </div>
           <div style="clear: both;" />
      </div>
-     <script src="/scripts/ui-states.js"></script>
-     <script src="/scripts/controllers/index.js"></script>
-     <script src="/scripts/plumbing/sessionrecoverer.js"></script>
-     <script src="/scripts/services/global.js"></script>
-     <script src="/scripts/controllers/auth.js"></script>
-     <script src="/scripts/controllers/cmspage.js"></script>
-     <script src="/scripts/controllers/node.js"></script>
-     <script src="/scripts/controllers/home.js"></script>
-     <script src="/scripts/controllers/list.js"></script>
-     <script src="/scripts/controllers/menu.js"></script>
-     <script src="/scripts/controllers/schema.js"></script>
-     <script src="/scripts/controllers/omnibox.js"></script>
      <script src="/scripts/weavver.js"></script>
 </body>
 </html>

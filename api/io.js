@@ -1,42 +1,44 @@
 
-exports.init = function (global) {
-     var io = require('socket.io')(global.http);
+exports.init = function (weavver) {
+     var io = require('socket.io')(weavver.http_service);
 
-     global.clients = [];
+     weavver.clients = [];
 
      var socketId = null;
      io.on('connection', function (socket) {
-          console.info('New client connected (id=' + socket.id + ').');
+          weavver.log('--> new io.js client connected (guid=' + weavver.nodeQueueId + '-' + socket.id + ').'.green);
           socketId = socket.id;
-          global.clients[socket.id] = socket;
+          weavver.clients[socket.id] = socket;
 
-          // incoming event
-          socket.on('weavver_inbound', function (client_message) {
-               console.log('socket.io got ' + JSON.stringify(client_message));
+          weavver.log('--> subscribing to incoming messages from express client'.green);
+          socket.on('message', function (client_message) {
+               weavver.log('socket.io got ' + JSON.stringify(client_message));
                var message = {
                     body: client_message,
                     received: new Date().getTime(),
                     returnAddress: {
-                         nodeQueueId: global.nodeQueueId,
+                         nodeQueueId: weavver.nodeQueueId,
                          socketId: socket.id
                     }
                };
-               global.messages.exchange_publish('weavver_inbound', message);
+               weavver.messages.exchange_publish('message_inbound', message);
           });
 
           // get messages destined for the browser
-          global.messages.consume(null, global.nodeQueueId, { autoDelete: true, noAck: false }, function (message) {
-               console.log(global.nodeQueueId + ' queue got: ' + JSON.stringify(message));
-
-               var client = global.clients[message.socketId];
-               if (client)
+          weavver.messages.consume(null, weavver.nodeQueueId, { autoDelete: true, noAck: false }, function (message) {
+               var client = weavver.clients[message.socketId];
+               if (client) {
                     client.emit(message.queue, message.browser_response);
-               else
-                    console.log('error to deal with');
+                    weavver.log(weavver.nodeQueueId + ' queue got: ' + JSON.stringify(message));
+               }
+               else {
+                    io.sockets.emit('console', message);
+                    //weavver.log('error to deal with');
+               }
           });
 
           socket.on('disconnect', function () {
-               console.log('disconnected client');
+               weavver.log('disconnected client');
           });
      });
 };

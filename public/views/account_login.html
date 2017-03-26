@@ -2,10 +2,10 @@
 <!--{{ $state.current.name }}-->
 <br />
 username:<br />
-<input ng-bind="data.user" type="textbox" placeholder="username">
+<input ng-bind="data.user" type="textbox" placeholder="username" autocomplete="username">
 <br /><br />
 password:<br />
-<input ng-bind="data.pass" type="textbox" placeholder="password">
+<input ng-bind="data.pass" type="textbox" placeholder="password" autocomplete="current-password">
 <br />
 <br />
 <input type="button" ng-click="login()" value="Login" />
