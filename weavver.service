@@ -1,0 +1,20 @@
+[Unit]
+Description=weavver
+
+[Service]
+ExecStart=/opt/bitnami/nodejs/bin/node /home/bitnami/weavver/app.js
+Restart=always
+User=bitnami
+Environment=PATH=/usr/bin:/usr/local/bin:/opt/bitnami/nodejs/bin
+Environment=NODE_ENV=production
+WorkingDirectory=/home/bitnami/weavver
+
+[Install]
+WantedBy=multi-user.target
+
+# sudo cp weavver.service /etc/systemd/system
+# sudo systemctl daemon-reload
+# sudo systemctl enable weavver.service
+# sudo systemctl start weavver.service
+# sudo systemctl status weavver.service
+# sudo journalctl --follow -u weavver
